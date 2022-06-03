@@ -9,7 +9,7 @@ export function Login() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetch("http://localhost:3001/login", {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
