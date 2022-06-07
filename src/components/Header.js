@@ -12,13 +12,13 @@ export const Header = ({ setSearchedPosts }) => {
       <div className="search">
         <SearchPosts setSearchedPosts={setSearchedPosts} />
       </div>
-      <div className="login">
-        <Login />
-      </div>
-      <div className="register">
-        Aún no tienes una cuenta?
-        <Link to={"/register"}>Regístrate!</Link>
-      </div>
+        <div className="register">
+          Aún no tienes una cuenta?
+          <Link to={"/register"}>Regístrate!</Link>
+        </div>
+        <div className="login">
+          <Login />
+        </div>
       {/* Perfil */}
       {/* likedposts */}
       {/* uploadpost */}
