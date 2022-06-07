@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchPosts = ({ setSearchedPosts }) => {
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     try {
+      setSearchedPosts([]);
       e.preventDefault();
       const text = e.target.elements.search.value;
       if (!text) {throw new Error ("buscar algo es obligatorio")}
@@ -17,6 +19,7 @@ export const SearchPosts = ({ setSearchedPosts }) => {
       if (results.length === 0) {throw new Error ("No hay resultados para tu busqueda")}
       console.log(results.data);
       setSearchedPosts(results.data);
+      navigate('/search');
     } catch (error) {
       console.error(error.message);
     }
@@ -26,7 +29,7 @@ export const SearchPosts = ({ setSearchedPosts }) => {
       <label htmlFor="search">Buscar:</label>
       <input id="search" name="search" type="search" />
       <button>
-        GO!
+      go
       </button>
     </form>
   );

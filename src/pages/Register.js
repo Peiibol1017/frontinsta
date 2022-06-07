@@ -1,3 +1,4 @@
+import "../Css/Register.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export const Register = () => {
@@ -37,9 +38,10 @@ export const Register = () => {
 }
 };
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="registerform">
         <label htmlFor="email">Email</label>
         <input
+          className="registerinput"
           name="email"
           type="email"
           value={email}
@@ -48,21 +50,25 @@ export const Register = () => {
         />
         <label htmlFor="username">Nombre de usuario:</label>
         <input
+          className="registerinput"
           name="username"
           value={username}
           required
           onChange={(e) => setUsername(e.target.value)}
         />
         <label htmlFor="pass1">Contraseña</label>
-        <label htmlFor="pass2">Confirma tu Contraseña</label>
         <input
+          className="registerinput"
           name="pass1"
           type="password"
           value={pass1}
           required
           onChange={(e) => setPass1(e.target.value)}
         />
+        <label htmlFor="pass2">Confirma tu Contraseña</label>
+
         <input
+          className="registerinput"
           type="password"
           id="pass2"
           name="pass2"
@@ -70,7 +76,7 @@ export const Register = () => {
           required
           onChange={(e) => setPass2(e.target.value)}
         />
-        <button>Registrate</button>
+        <button className="registerbutton">Registrate</button>
         {error ? <p>{error}</p> : null}
       </form>
     );

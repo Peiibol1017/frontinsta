@@ -1,12 +1,12 @@
 import "./App.css";
-import { PostsFromSearch } from "./pages/PostsFromSearch";
 import { useState } from "react";
 
 import { Header } from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import { Register } from "./pages/Register";
 import { Home } from "./pages/Home";
-import { GetPosts } from "./components/GetPosts";
+import { PostsList } from "./components/PostsList";
+import { Post } from "./pages/Post";
 
 function App() {
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -15,8 +15,10 @@ function App() {
       <main>
         <Header setSearchedPosts={setSearchedPosts} />
         <Routes>
-          <Route path="/" element={<Home searchedPosts={searchedPosts}/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/post/:id" element={<Post />}/>
           <Route path="/register" element={<Register />} />
+          <Route path="/search" element={<PostsList posts={searchedPosts} />} />
         </Routes>
       </main>
     </div>

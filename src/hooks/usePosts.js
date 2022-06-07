@@ -23,5 +23,5 @@ export const usePosts = () => {
     };
     getPosts();
   }, []);
-  return { posts, error, loading };
+  return { posts, error, loading,};
 };

@@ -1,3 +1,4 @@
+import "../Css/Login.css"
 import { useState } from "react";
 
 export function Login() {
@@ -15,10 +16,11 @@ export function Login() {
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
+      if (!res.ok) {
+      throw new Error(data.message);
+      }
       if (res.ok) {
         console.log("Status:", res.status, "Data:", data);
-      } else {
-        setError(data?.error || "Error desconocido");
       }
     } catch (error) {
       console.error(error);
@@ -27,21 +29,24 @@ export function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="loginform" onSubmit={handleSubmit}>
       <input
+        className="logininput"
         name="username"
         placeholder="Nombre de usuario"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
+        className="logininput"
         name="password"
         type="password"
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button>Login</button>
+      <button className="loginbutton">Login</button>
+      {error ? <p className="error">{error}</p> : null}
     </form>
   );
 }

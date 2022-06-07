@@ -1,0 +1,28 @@
+.loginform { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+.loginbutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.loginbutton :hover{
+    background-color: #5ea960;
+}
+.error {
+    font-size: 20px;
+    color: red;
+}
+.logininput{
+    margin: 4px;
+    border-radius: 4rem;
+
+}

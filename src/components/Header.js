@@ -1,16 +1,24 @@
+import "../Css/Header.css";
 import { Link } from "react-router-dom";
 import { Login } from "./Login";
 import { SearchPosts } from "./SearchPosts";
 
-export const Header = ({setSearchedPosts}) => {
+export const Header = ({ setSearchedPosts }) => {
   return (
-    <header>
-      <h1><Link to={"/"}>INSTAGRAM</Link></h1>
-      <div>    
-      <SearchPosts setSearchedPosts={setSearchedPosts} />
-      <Login />
+    <header className="header">
+      <h1 className="title">
+        <Link to={"/"}>INSTAGRAM</Link>
+      </h1>
+      <div className="search">
+        <SearchPosts setSearchedPosts={setSearchedPosts} />
       </div>
-      <p><Link to={"/register"}>Regístrate!</Link></p>
+      <div className="login">
+        <Login />
+      </div>
+      <div className="register">
+        Aún no tienes una cuenta?
+        <Link to={"/register"}>Regístrate!</Link>
+      </div>
       {/* Perfil */}
       {/* likedposts */}
       {/* uploadpost */}
