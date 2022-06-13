@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 
+
+
 export const useSinglePost = (id) => {
     const [post, setPost] = useState(null);
     const [error, setError] = useState ("");
     const [loading, setLoading] = useState (true);
+
     useEffect(()=>{
+            
         const getPost = async () =>{
             try{
                 setLoading(true);
                 const res = await fetch (`${process.env.REACT_APP_BACKEND}/post/${id}`);
-                const data = await res.json();
+                const json = await res.json();
                 if(!res.ok) {
-                    throw new Error (data.message)
+                    throw new Error (json.message)
                 }
-                setPost(data.message);
+                setPost(json.message);
             }
             catch(error){
                 setError(error.message || "merda")
@@ -25,5 +29,8 @@ export const useSinglePost = (id) => {
         getPost();
     },[id])
 
-    return {post, error, loading}
+    
+  
+
+    return {post, error, loading,}
 }

@@ -1,10 +1,12 @@
 import "../Css/Login.css"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const {login} = useContext(UserContext)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,20 +17,18 @@ export function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-      const data = await res.json();
+      const json = await res.json();
       if (!res.ok) {
-      throw new Error(data.message);
+      throw new Error(json.message);
       }
-      if (res.ok) {
-        console.log("Status:", res.status, "Data:", data);
-      }
+      login(json.data);
     } catch (error) {
       console.error(error);
       setError(error.message || "Error desconocido");
     }
   };
 
-  return (
+  return(
     <form className="loginform" onSubmit={handleSubmit}>
       <input
         className="logininput"

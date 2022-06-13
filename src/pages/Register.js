@@ -26,11 +26,9 @@ export const Register = () => {
       },
     });
 
-  const data = await res.json();
-        if (res.ok) {
-        console.log("Status:", res.status, "Data:", data);}
+  const json = await res.json();
    if (!res.ok) {
-     throw new Error(data.message);
+     throw new Error(json.message);
    }
    navigate("/")
 } catch (error) {
