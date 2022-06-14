@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 export const Register = () => {
  const navigate = useNavigate();
 
+ const[name, setName] = useState("");
+ const [surname, setSurname] = useState("");
+ const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [pass1, setPass1] = useState("");
@@ -20,7 +23,7 @@ export const Register = () => {
     try {
     const res = await fetch(`${process.env.REACT_APP_BACKEND}/user`, {
       method: "POST",
-      body: JSON.stringify({ username, email, password: pass1 }),
+      body: JSON.stringify({ name, surname, age, username, email, password: pass1 }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -37,6 +40,30 @@ export const Register = () => {
 };
     return (
       <form onSubmit={handleSubmit} className="registerform">
+                <label htmlFor="name">Nombre:</label>
+        <input
+          className="registerinput"
+          name="name"
+          value={name}
+          required
+          onChange={(e) => setName(e.target.value)}
+        />
+                <label htmlFor="surname">Apellido:</label>
+        <input
+          className="registerinput"
+          name="surname"
+          value={surname}
+          required
+          onChange={(e) => setSurname(e.target.value)}
+        />
+                <label htmlFor="age">Edad:</label>
+        <input
+          className="registerinput"
+          name="age"
+          value={age}
+          required
+          onChange={(e) => setAge(e.target.value)}
+        />
         <label htmlFor="email">Email</label>
         <input
           className="registerinput"
