@@ -11,7 +11,7 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ export const Register = () => {
    }
    navigate("/")
 } catch (error) {
-    setError(error.messsage);
+    setError(error.message);
 }
 };
     return (

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../contexts/UserContext"
 
 export const UploadPost = () =>{
@@ -6,6 +7,7 @@ export const UploadPost = () =>{
     const [loading, setLoading] = useState(false)
     const [image, setImage] = useState('')
     const {token} = useContext(UserContext)
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -28,6 +30,7 @@ export const UploadPost = () =>{
             setError(error.message)
         } finally{
             setLoading(false)
+            navigate(`/`)
         }
     }
     return (

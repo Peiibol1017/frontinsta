@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 
 
-export const useSinglePost = (id) => {
+const useSinglePost = (id) => {
     const [post, setPost] = useState(null);
     const [error, setError] = useState ("");
     const [loading, setLoading] = useState (true);
@@ -20,7 +20,7 @@ export const useSinglePost = (id) => {
                 setPost(json.message);
             }
             catch(error){
-                setError(error.message || "merda")
+                setError(error.message)
             }
                 finally{
                 setLoading(false);
@@ -34,3 +34,4 @@ export const useSinglePost = (id) => {
 
     return {post, error, loading,}
 }
+export default useSinglePost

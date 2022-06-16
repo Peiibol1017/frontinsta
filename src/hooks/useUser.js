@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useUser = (id) => {
+const useUser = (id) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,3 +24,4 @@ export const useUser = (id) => {
   }, [id]);
   return { user, error, loading };
 };
+export default useUser

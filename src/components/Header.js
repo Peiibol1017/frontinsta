@@ -18,7 +18,9 @@ export const Header = ({ setSearchedPosts }) => {
       <div className="profile">
         <Link to={`/user/${user.id}`}>Perfil</Link>
       </div>
+      <Link to={`/liked/user`}>
       <div className="liked">PostGusta</div>
+      </Link>
       <div className="upload">
         <Link to={"/upload"}>UP</Link>
       </div>
