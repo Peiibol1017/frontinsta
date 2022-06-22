@@ -1,19 +1,13 @@
-import {Link} from "react-router-dom";
-export const PostsList = ({posts}) => {
+import "../Css/PostsList.css";
+import { GetSinglePost } from "./GetSinglePost";
+export const PostsList = ({posts, deletedPost, deletedLikedPost}) => {
            
   return (
-    <ul className="posts">
+    <ul className="postslist">
       {posts.map((post) => {
         return (
-          <li key={post.id}>
-            <p>{post.user_id}</p>
-            <Link to={`/post/${post.id}`}>
-              <img
-                src={`${process.env.REACT_APP_BACKEND}/uploads/${post.image}`}
-                alt={post.text}
-              />
-            </Link>
-            <p>{post.mess}</p>
+          <li key={post.id} className="post">
+              <GetSinglePost post={post} deletedPost={deletedPost} deletedLikedPost={deletedLikedPost}/>
           </li>
         );
       })}

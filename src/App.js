@@ -9,6 +9,8 @@ import { PostsList } from "./components/PostsList";
 import { Post } from "./pages/Post";
 import { UploadPost } from "./pages/UploadPost";
 import {UserPage} from "./pages/UserPage";
+import { LikedPosts } from "./pages/LikedPosts";
+import { EditProfile } from "./pages/EditProfile";
 
 function App() {
   const [searchedPosts, setSearchedPosts] = useState([]);
@@ -23,6 +25,8 @@ function App() {
           <Route path="/search" element={<PostsList posts={searchedPosts} />} />
           <Route path="/upload" element={<UploadPost />} />
           <Route path="/user/:id" element={<UserPage />} />
+                    <Route path="/edit/:id" element={<EditProfile/>}/>
+          <Route path="/liked/user" element={<LikedPosts />}/>
         </Routes>
       </main>
     </div>

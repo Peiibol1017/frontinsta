@@ -26,10 +26,9 @@ export const usePosts = (id) => {
                       }
                       return json.data;
                     };
+                    
 
   useEffect(() => {
-
-    console.log(id);
     const getPosts = async () => {
       try {
         setLoading(true);

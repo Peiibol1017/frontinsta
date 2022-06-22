@@ -4,6 +4,7 @@ import { Loading } from "../components/Loading";
 import { useSinglePost } from "../hooks/useSinglePost";
 import {GetSinglePost} from "../components/GetSinglePost"
 
+
 export const Post = () => {
     const {id} = useParams();
     const {post, error, loading } = useSinglePost(id);

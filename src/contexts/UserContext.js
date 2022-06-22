@@ -5,7 +5,7 @@ export const UserContext = createContext();
 export const UserProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
-
+console.log(token)
   useEffect(() => {
     localStorage.setItem("token", token);
   }, [token]);
@@ -13,7 +13,7 @@ export const UserProviderComponent = ({ children }) => {
   useEffect(() => {
     const getOwnData = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/user`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND}/profile`, {
           headers: { Authorization: token },
         });
         const json = await res.json();

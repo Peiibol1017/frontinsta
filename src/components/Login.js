@@ -21,6 +21,7 @@ export function Login() {
       if (!res.ok) {
       throw new Error(json.message);
       }
+      console.log(json.data)
       login(json.data);
     } catch (error) {
       console.error(error);
@@ -45,7 +46,7 @@ export function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className="loginbutton">Login</button>
+      <button className="loginbutton">Entrar</button>
       {error ? <p className="error">{error}</p> : null}
     </form>
   );

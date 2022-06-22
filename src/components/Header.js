@@ -4,38 +4,53 @@ import { Login } from "./Login";
 import { SearchPosts } from "./SearchPosts";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import logins from "./logins.png";
 
 export const Header = ({ setSearchedPosts }) => {
   const {user, logout} = useContext(UserContext)
   return user ? (
     <header className="header">
-      <h1 className="title">
-        <Link to={"/"}>INSTAGRAM</Link>
-      </h1>
+<div className="logo">
+      <Link to={"/"}>
+          <img src={logins} width="200" height="80" alt="insta"/>
+          </Link>
+      </div>
       <div className="search">
         <SearchPosts setSearchedPosts={setSearchedPosts} />
       </div>
       <div className="profile">
-        <Link to={`/user/${user.id}`}>Perfil</Link>
+        <Link to={`/user/${user.id}`}>
+          <button>Perfil</button>
+          </Link>
       </div>
-      <div className="liked">PostGusta</div>
+            <Link to={`/liked/user`}>
+      <div className="liked">
+        <button>
+          PostGusta
+          </button>
+          </div>
+      </Link>
       <div className="upload">
-        <Link to={"/upload"}>UP</Link>
+        <Link to={"/upload"}>
+          <button>Publicar</button>
+          </Link>
       </div>
-      <button onClick={() => logout()}>LogOut</button>
+      <button onClick={() => logout()}>Cerrar sesión</button>
     </header>
   ) : (
     <header className="header">
-      <h1 className="title">
-        <Link to={"/"}>INSTAGRAM</Link>
-      </h1>
+      <div className="logo">
+      <Link to={"/"}>
+          <img src={logins} width="200" height="80" alt="insta"/>
+          </Link>
+      </div>
       <div className="search">
         <SearchPosts setSearchedPosts={setSearchedPosts} />
       </div>
       <div className="register">
-        Aún no tienes una cuenta?
-        <Link to={"/register"}>Regístrate!</Link>
-      </div>
+          ¿No tienes una cuenta? 
+          <button className="buttonregister"><Link to={"/register"}>¡Regístrate!</Link></button>
+        </div>
       <div className="login">
         <Login />
       </div>
