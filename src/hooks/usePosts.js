@@ -1,20 +1,41 @@
 import { useEffect, useState } from "react";
 
-export const usePosts = () => {
+
+export const usePosts = (id) => {
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+                     const getAllPosts = async () => {
+                      const res = await fetch(
+                        `${process.env.REACT_APP_BACKEND}`
+                      );
+                      const json = await res.json();
+                      if (!res.ok) {
+                        throw new Error(json.message);
+                      }
+                      return json.data;
+                    };
+                     const getUserPosts = async (id) => {
+                      const res = await fetch(
+                        `${process.env.REACT_APP_BACKEND}/user/${id}/posts`
+                      );
+                      const json = await res.json();
+                      if (!res.ok) {
+                        throw new Error(json.message);
+                      }
+                      return json.data;
+                    };
+                    
 
   useEffect(() => {
     const getPosts = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}`);
-        const data = await res.json();
-        if (!res.ok) {
-          throw new Error(data.message);
-        }
-        setPosts(data.data);
+const data = id
+? await getUserPosts(id)
+: await getAllPosts();
+setPosts(data)
       } catch (error) {
         setError(error.message);
       } finally {
@@ -22,6 +43,6 @@ export const usePosts = () => {
       }
     };
     getPosts();
-  }, []);
-  return { posts, error, loading };
+  }, [id]);
+  return { posts, error, loading,};
 };
